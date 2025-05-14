@@ -11,7 +11,7 @@ https://proefforter.tistory.com/26
 <h2>2. Intelli J와 함께 사용할 스프링 부트 </h2>
 start.spring.io 링크에 들어가면 메인 화면이 나온다. 
 
-(![image-1.png](../../AppData/Local/Temp/image-1.png)/images/image-1.png)
+![img.png](images/img.png)
 <br/>
 [그림 1] start.spring.io의 메인 화면
 <br/>
@@ -22,7 +22,7 @@ Spring에서는 "의존성"이 존재한다. <br/>
 
 의존성을 추가하기 위해서는 **그림1의 Dependencies의 ADD...를 눌러 의존성을 추가**하면 된다. <br/>
 
-![alt text](/images/image.png) <br/>
+![img_1.png](images/img_1.png) <br/>
 [그림 2 ] 웹 사이트를 위해 의존성을 추가한 모습 <br/>
 위의 그림2를 통해서 의존성을 추가한 것을 볼 수 있다. <br/>
 
@@ -39,7 +39,7 @@ Intelli J를 통해서 파일을 불러올 때 해당 파일의 build.gradle을 
 
 <h2>4. propject의 구조 </h2>
 
-![alt text](/images/image-2.png) <br/>
+![img_2.png](images/img_2.png) <br/>
 
 [그림 3] 프로젝트의 구조 <br/>
 main과 test라는 폴더가 나누어진 것을 볼 수 있다.  <br/>
@@ -55,7 +55,7 @@ respurces: xml 등 설정 파일이 들어가 있다고 볼 수 있다. 즉, 자
 
 <h2>5. 해당 파일의 main 함수를 통해 실행하기 </h2>
 
-![alt text](/images/image-3.png) <br/>
+![img_3.png](images/img_3.png) <br/>
 
 [그림 4 ] src 내부의 HelloSpringAppicationdml 소스코드 <br/><br/>
 
@@ -64,7 +64,7 @@ respurces: xml 등 설정 파일이 들어가 있다고 볼 수 있다. 즉, 자
 
  <br/>
 
-![alt text](/images/image-5.png) <br/>
+![img.png](images/img_4.png) <br/>
 
 [그림 5] localhost:8080의 내용  <br/>
 위의 그림 5와 같이 나온다면 성공한 내용이다.  <br/>
@@ -74,7 +74,7 @@ respurces: xml 등 설정 파일이 들어가 있다고 볼 수 있다. 즉, 자
 
 <h2>6. properties 설정 </h2>
 
-![alt text](/images/image-4.png) <br/>
+![img_1.png](images/img_5.png) <br/>
 
 [그림 6] intelli J의 properties 화면 <br/>
  
