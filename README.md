@@ -11,7 +11,7 @@ https://proefforter.tistory.com/26
 <h2>2. Intelli J와 함께 사용할 스프링 부트 </h2>
 start.spring.io 링크에 들어가면 메인 화면이 나온다. 
 
-![alt text](/images/image-1.png)
+(![image-1.png](../../AppData/Local/Temp/image-1.png)/images/image-1.png)
 <br/>
 [그림 1] start.spring.io의 메인 화면
 <br/>
