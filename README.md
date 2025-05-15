@@ -79,3 +79,48 @@ respurces: xml 등 설정 파일이 들어가 있다고 볼 수 있다. 즉, 자
 [그림 6] intelli J의 properties 화면 <br/>
  
 그림 6의  빌드 및 실행 , 테스트 실행을 기존의 gradle에서 intelli J로 설정한다면 속도가 보다 빠르게 실행될 수 있다. <br/>
+
+
+<hr>
+
+<h2>@ResponseBody의 유무의 차이</h2>
+
+1. ResponseBody가 존재하지 않는경우
+<br/> 
+
+```js
+    @GetMapping("hello-mvc")
+    public String helloMVC(@RequestParam(name = "name", required = false) String name, Model model){
+        // 윈도우의 경우 ctrl + P를 통해서 함수나, 메서드의 파라미터 정보를 확인할 수 있다.
+        // required = false -> 해당하는 파라미터가 없어도 오류가 발생하지 않는다.
+        // required = true -> 해당하는 파라미터가 반드시 포함되어야 하며, 파라미터가 포함되지 않고 전달될 경우에, 404 Bad Request가 나온다.
+        model.addAttribute("name",name);
+        
+        return "hello_template"; // viewResolver가 templates의 hello-template.html을 찾아서 반환을 해줌
+    }
+```
+<br/>
+
+![img_6.png](images/img_6.png) <br/>
+[그림 7] controller에서 ResponseBody를 포함하지 않는 경우 <br/>
+
+<br/>
+
+2. ResponseBody가 존재하는 경우 <br/>
+
+```angular2html
+    @GetMapping("hello-string")
+    @ResponseBody // http의 head부와 body부 중에서 body부에 직접 넣어주겠다는 의미
+    public String helloString(@RequestParam("name") String name){
+        // ResponseBody로 인해서 viewResolver를 거치지 않고 간다.
+        return "hello " + name; // hello + 파라미터
+    }
+
+```
+<br/>
+
+![img_7.png](images/img_7.png) <br/>
+[그림 8] controller에서 ResponseBody를 포함하여 viewResolver를 거치지 않고 데이터를 전송한 모습 
+
+
+
