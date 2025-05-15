@@ -88,7 +88,7 @@ respurces: xml 등 설정 파일이 들어가 있다고 볼 수 있다. 즉, 자
 1. ResponseBody가 존재하지 않는경우
 <br/> 
 
-```js
+```
     @GetMapping("hello-mvc")
     public String helloMVC(@RequestParam(name = "name", required = false) String name, Model model){
         // 윈도우의 경우 ctrl + P를 통해서 함수나, 메서드의 파라미터 정보를 확인할 수 있다.
@@ -109,7 +109,7 @@ respurces: xml 등 설정 파일이 들어가 있다고 볼 수 있다. 즉, 자
 
 2. ResponseBody가 존재하는 경우 <br/>
 
-```angular2html
+```
     @GetMapping("hello-string")
     @ResponseBody // http의 head부와 body부 중에서 body부에 직접 넣어주겠다는 의미
     public String helloString(@RequestParam("name") String name){
@@ -124,4 +124,41 @@ respurces: xml 등 설정 파일이 들어가 있다고 볼 수 있다. 즉, 자
 [그림 8] controller에서 ResponseBody를 포함하여 viewResolver를 거치지 않고 데이터를 전송한 모습 
 
 
+<hr> 
+<h2>정리</h2>
+
+1. 정적 컨텐츠  <br/>
+파일을 있는 그대로 내려서 보여준다. <br/>
+<br/>
+
+3. MVC <br/> 
+mvc와 템플릿 엔진을 model, view, controller로 쪼개서 view를 템플릿 엔진을 활용하여 조금 더 프로그래밍하여 랜더링 후 클라이언트에게 전달해준다. <br/>
+<br/>
+
+3. API 
+API는 보통의 Spring 개발에서 API 방식은 객체를 반환하는 JSON 스타일로 변환하여 반환시키는 것 (View를 사용하지 않는 것)
+
+```
+@GetMapping("hello-api")
+@ResponseBody // JSON으로 반환하는게 훨씬 편하며, ViewResorver가 아닌 HttpMessageConverter가 작동한다.
+public Hello helloApi(@RequestParam("name") String name){
+    Hello hello = new Hello();
+    hello.setName(name);
+    return hello;
+}
+
+// 정적클래스 Hello 생성
+static class Hello {
+    private  String name;
+
+    public String getName(){
+    return name;
+    }
+    
+    public void setName(String name){
+    this.name = name;
+    }
+
+}
+```
 
