@@ -105,6 +105,7 @@ respurces: xml 등 설정 파일이 들어가 있다고 볼 수 있다. 즉, 자
 [그림 7] controller에서 ResponseBody를 포함하지 않는 경우 <br/>
 
 <br/>
+<hr>
 
 2. ResponseBody가 존재하는 경우 <br/>
 
