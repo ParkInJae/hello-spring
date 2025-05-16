@@ -23,6 +23,8 @@ public class MemoryMemberRepository implements MemberRepository {
     @Override
     public Optional<Member> findById(Long id) {
         return Optional.ofNullable(store.get(id)); // 결과가 없을 경우는 null을 반환함  // null이 나올경우 null을 감싸서 반환
+        // store는 Map이며, Map은 키에 대한 값을 가져오기 때문에 stre의 get메소드에 키 값인 id를 가져와서 optional에 담아서 반환한다.
+
     }
 
     @Override
@@ -42,6 +44,6 @@ public class MemoryMemberRepository implements MemberRepository {
     @Override
     public List<Member> findAll() {
         // 전체 요소를 가져오기 때문에, 리스트를 생성하고 리스트에 store의 값들을 담은 전체 값을 반환한다.
-        return new ArrayList<>(store.values());
+        return new ArrayList<>(store.values());  // values() -> map에 존재하는 모든 요소를 집합 형태로 가져옴
     }
 }
