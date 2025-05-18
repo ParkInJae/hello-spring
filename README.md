@@ -1,10 +1,11 @@
 <h2>1. Intelli J 설치하기</h2>
 
-아래의 링크를 통해 확인이 가능함 
-https://www.jetbrains.com/ko-kr/idea/download/?section=windows
+아래의 링크를 통해 확인이 가능함 <br/> 
+https://www.jetbrains.com/ko-kr/idea/download/?section=windows <br/>
 
-설치에 대한 자세한 내용 
-https://proefforter.tistory.com/26
+<br/>
+설치에 대한 자세한 내용 <br/>
+https://proefforter.tistory.com/26 <br/>
 
 <br/>
 
