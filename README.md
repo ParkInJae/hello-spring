@@ -1,4 +1,12 @@
-<h2>1. Intelli J 설치하기</h2>
+<h1> 목차</h1>
+
+1. Intelli J 설치하기 
+2. intelli J를 통한 테스트 방법
+3. 정리 
+
+<hr>
+
+<h2> 1. Intelli J 설치하기</h2>
 
 아래의 링크를 통해 확인이 가능함 <br/> 
 https://www.jetbrains.com/ko-kr/idea/download/?section=windows <br/>
@@ -125,8 +133,52 @@ respurces: xml 등 설정 파일이 들어가 있다고 볼 수 있다. 즉, 자
 [그림 8] controller에서 ResponseBody를 포함하여 viewResolver를 거치지 않고 데이터를 전송한 모습 
 
 
+<h2> 2.intelli J를 통한 테스트 방법 </h2>
+
+(1) service의 이름이 중복되면 안된다는 로직 
+
+```
+private void validateDuplicateMember(Member member) {
+        Optional<Member> result =  memberRepository.findByName(member.getName());
+        // ifPresent 값이 null이 아닌 값이 존재한다면 아래의 로직이 작동
+        // Optional이기 때문에 가능함
+        result.ifPresent(m-> {
+            throw new IllegalStateException("이미 존재하는 아이디입니다.");
+        });
+    }
+```
+
+(2) 해당 로직에 대한 테스트 케이스 코드 내용 
+
+```
+ public  void 중복_회원_예외(){
+        // given
+        Member member1 = new Member();
+        member1.setName("Spring");
+        
+        Member member2 = new Member();
+        member2.setName("Spring");
+        // when
+        memberService.join(member1); // 회원 1을 회원가입 시켰다고 가정
+        assertThrows(IllegalStateException.class, () -> memberService.join(member2));
+```
+
+**아래의 그림9와 그림 10을 통해서 테스트가 정상적으로 통과된 모습과 통과되지 못했을 때 모습을 볼 수 있다.**
+ 
+![img_8.png](images/img_8.png) <br/>
+[그림 9] 테스트가 정상적으로 통과된 모습 
+
+<br/><br/>
+
+![img_9.png](images/img_9.png)
+[그림 10] 테스트가 정상적으로 통과되지 못햇을 때 
+
+**그림 10은 IllegalStateException이 아닌 NullPointException을 적용하자 에러가 발생한 것을 볼 수 있다.**
+
+
+
 <hr> 
-<h2>정리</h2>
+<h2> 3.정리</h2>
 
 1. 정적 컨텐츠  <br/>
 파일을 있는 그대로 내려서 보여준다. <br/>
@@ -162,4 +214,30 @@ static class Hello {
 
 }
 ```
+4. Optional이란? <br/>
+oOptional은 null이 올 수 있는 값을 감싸는 wrapper 클래스이다. <br/>
+Optional을 사용한다면 NPE(Null Point Exception)이 발생하지 않도록 도와준다. <br/>
+   <br/><br/>
+* ifPresent() :  Void 타입이며, ifPresent()는 Optional 객체가 값을 가지고 있으면 실행하며, <br/>
+값이 없으면 넘어감
+ 
+<br/>
+<br/>
+* isPresent() : Boolean 타입이며, Optional 객체가 값을 가지고 있다면 true, 값이 없다면 false 리턴한다.
 
+<br/>
+
+```
+
+Optional이란? 
+Optional<T>는 null이 올 수 있는 값을 감싸는 Wrapper 클래스로, 참조하더라도 NPE
+(Null Point Exception)가 발생하지 않도록 도와준다. 
+
+    memberRepository.findById(member.getId())는  Optional<Member> 타입이기 때문에, 위의 코드를 축약해서
+        아래처럼 나태낼 수 있다.
+    memberRepository.findById(member.getId())
+                    .ifPresent(m ->{
+                        throw new IllegalStateException("이미 존재하는 아이디입니다.");
+                    });
+         
+```
