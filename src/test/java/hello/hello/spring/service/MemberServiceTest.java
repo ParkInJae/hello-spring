@@ -41,7 +41,7 @@ class MemberServiceTest {
         member2.setName("Spring");
         // when
         memberService.join(member1); // 회원 1을 회원가입 시켰다고 가정
-        assertThrows(NullPointerException.class, () -> memberService.join(member2));
+        assertThrows(IllegalStateException.class, () -> memberService.join(member2));
 
 
     /*
