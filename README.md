@@ -236,7 +236,7 @@ Optional<T>는 null이 올 수 있는 값을 감싸는 Wrapper 클래스로, 참
     memberRepository.findById(member.getId())는  Optional<Member> 타입이기 때문에, 위의 코드를 축약해서
         아래처럼 나태낼 수 있다.
     memberRepository.findById(member.getId())
-                    .ifPresent(m ->{
+                    .ifPresent(m ->{ // ifPresent > 만약 존재한다고 가정할 때 , isPresent와 다름 
                         throw new IllegalStateException("이미 존재하는 아이디입니다.");
                     });
          
