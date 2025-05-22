@@ -2,14 +2,16 @@
 package hello.hello.spring.repository;
 
 import hello.hello.spring.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
 // implements 할 때 자동 import가 안 된다면, 위 package 선언과 경로를 반드시 검사하세요.
 // alt + enter를 통해서 메소드 구현을 자동으로 할 수 있다.
+@Repository
 public class MemoryMemberRepository implements MemberRepository {
 
-    private static Map<Long,Member> store = new HashMap<>(); // save를 통해 저장할 저장소 생성
+    private static Map<Long,Member> store = new HashMap<>(); // save를 통해 저장할 저장소 생성, static이 아닐경우 Me
     private static long sequence =0L;
 
 

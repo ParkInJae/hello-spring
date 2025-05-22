@@ -2,15 +2,21 @@ package hello.hello.spring.service;
 
 import hello.hello.spring.domain.Member;
 import hello.hello.spring.repository.MemberRepository;
-import hello.hello.spring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-
 //윈도우 기준 ctrl + shift + t 를 눌러서 테스트 케이스를 자동적으로 생성할 수 있다.
+@Service
 public class MemberService {
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository; // 다른 MemoryMemberRepository를 참조할 수 있기 때문에 변경함
+
+    @Autowired // Autowired를 통해서 스프링 컨터이너가 MemberRepository가 필요한 것을 알고 주입해준다.
+    public MemberService(MemberRepository memberRepository) { //  외부에서 memberRepository를 넣어주기 때문에 의존성이 주입된다.
+        this.memberRepository = memberRepository;
+    }
 
     // 회원가입
     /*

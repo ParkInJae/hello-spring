@@ -4,6 +4,7 @@ import hello.hello.spring.domain.Member;
 import hello.hello.spring.repository.MemoryMemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -11,8 +12,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 //기존 클래스에서 윈도우 기준 ctrl + shift + t 를 눌러서 자동적으로 생성한 테스트 클래스
 class MemberServiceTest {
 
-    MemberService memberService = new MemberService();
-    MemoryMemberRepository memberRepository = new MemoryMemberRepository();
+    MemberService memberService;
+    MemoryMemberRepository memberRepository;
+
+    @BeforeEach
+    public void beforeEach(){
+        memberRepository = new MemoryMemberRepository();  // 테스트 실행하기 전에 memberRepository 객체를 생성함
+        memberService = new MemberService(memberRepository); // 새로 생성한 객체를 MemberService의 매개 변수가 존재하는 생성자에 넣어서
+        // memberService에서 동일한 객체를 사용할 수 있도록 한다.
+    }
+
 
 @AfterEach
 public void afterEach(){
